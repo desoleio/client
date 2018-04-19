@@ -1,0 +1,21 @@
+{
+  "extends": "crockford",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "strict": ["error", "function"],
+    "no-unused-vars": "error",
+    "indent": ["error", 2],
+    "one-var": 0,
+    "vars-on-top": 0,
+    "no-underscore-dangle": 0,
+    "no-plusplus": 0,
+    "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "desole-client",
+  "version": "1.0.0",
+  "description": "Client side library for Desole.io",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desoleio/client.git"
+  },
+  "keywords": [
+    "desole",
+    "error",
+    "tracking"
+  ],
+  "author": "Slobodan Stojanović <slobodan@cloudhorizon.com> (http://slobodan.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/desoleio/client/issues"
+  },
+  "homepage": "https://github.com/desoleio/client#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-crockford": "^2.0.0",
+    "eslint-config-defaults": "^9.0.0"
+  }
+}
