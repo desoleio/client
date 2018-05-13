@@ -1,12 +1,24 @@
-# client
+# Desole JavaScript collector client
 
-Add this block to the HEAD of your HTML document
+
+This project contains the code for the Desole JavaScript client collector, compatible with browsers and Node.js. 
+
+## Installing into a browser
+
+You can either grab the code from this repository, install it using NPM, or use the CDN version:
+
+* non-minified: https://desole.io/code/1.0.0/client.js (CORS integrity hash sha384-F6dlhvEal5yUmvat1O3JGkkA6xaPbwxWhQksJVfbZTFvLR3KkWmNf2OkF1jyuzzA)
+* minified: https://desole.io/code/1.0.0/client-min.js (CORS integrity hash sha384-RJpzB9k3WRLZZ0Th8DoSiEWUYMmt5+9fxLajledFE5PY/23D+tHatLo38g/LDc7z)
+
+## Configuring the HTML page
+
+Add this snippet before any other scripts in your HTML document, and replace the path to the client JS and the API URL:
 
 ```html
-<script type=text/javascript src="path/to/desole.js"></script>
-<script type=text/javascript>
+<script src="CLIENT-LIBRARY-PATH" crossorigin="anonymous" integrity="INTEGRITY-HASH"></script>
+<script>
   var desole = new Desole({
-    url: 'http://your-desole-api-url', // API URL
+    url: 'https://DESOLE-API-URL', 
     app: {
       name: 'Desole test',
       version: '1.0.0',
@@ -15,33 +27,9 @@ Add this block to the HEAD of your HTML document
   })
 </script>
 ```
+This will make Desole automatically track unhandled errors on the page, as well as script loading errors. Make sure to add the block to the end of the HEAD element
 
-## configuring modules
-
-Supply the list of modules you'd like to activate. Currently supported modules are
-
-* `onerror`: track uncaught exceptions
-* `console`: track console error logging
-* `unhandledrejection`: track unhandled promise rejections (where [supported by browsers](https://caniuse.com/#feat=unhandledrejection)).
-
-```html
-<script type=text/javascript src="path/to/desole.js"></script>
-<script type=text/javascript>
-var desole = new Desole({
-    url: 'http://your-desole-api-url', // API URL
-    app: {
-      name: 'Desole test',
-      version: '1.0.0',
-      stage: 'test'
-    },
-    modules: ['onerror', 'console', 'unhandledrejection']
-  })
-</script>
-```
-
-## Track errors manually
-
-Use `window.desole.captureException` to send an exception object or a promise rejection to the collector API.
+To track errors manually, use `window.desole.captureException` to send an exception object or a promise rejection to the collector API:
 
 ```js
 try {

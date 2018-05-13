@@ -5,7 +5,8 @@
   "main": "client.js",
   "scripts": {
     "lint": "eslint .",
-    "release": "mkdir -p $npm_package_config_releaseDir/$npm_package_version && cp *.js $npm_package_config_releaseDir/$npm_package_version"
+    "uglify": "uglifyjs client.js -c -o client-min.js",
+    "release": "npm run uglify && mkdir -p $npm_package_config_releaseDir/$npm_package_version && cp *.js $npm_package_config_releaseDir/$npm_package_version"
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,12 @@
   },
   "homepage": "https://github.com/desoleio/client#readme",
   "config": {
-    "releaseDir": "../www.desole.io/public"
+    "releaseDir": "../www.desole.io/code"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-crockford": "^2.0.0",
-    "eslint-config-defaults": "^9.0.0"
+    "eslint-config-defaults": "^9.0.0",
+    "uglify-js": "^3.3.25"
   }
 }
