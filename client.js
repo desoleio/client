@@ -68,7 +68,7 @@
           self.track({
             severity: 'warning',
             stack: '',
-            type: 'UnhandledPromiseRejection',
+            type: (err.type || 'UnhandledPromiseRejection'),
             message: err.reason
           });
 
