@@ -14,7 +14,7 @@
       this.url = config.url;
       this.tags = config.tags || {};
       this.ignore = config.ignore || [];
-      this.modules = config.modules || ['onerror', 'http', 'console', 'unhandledrejection'];
+      this.modules = config.modules || ['onerror', 'console', 'unhandledrejection'];
       this.app = {
         name: (config.app && config.app.name) || (window && window.location && window.location.hostname),
         version: (config.app && config.app.version) || false,
@@ -40,58 +40,6 @@
 
           if (self._originalOnError) {
             self._originalOnError(window, [message, url, lineNo, columnNo, err]);
-          }
-        };
-      }
-
-      if (this.modules.indexOf('http') > -1) {
-        self._originalHttpSend = window.XMLHttpRequest.prototype.send;
-        window.XMLHttpRequest.prototype.send = function () {
-          var xhrOnerror = this.onerror;
-
-          this.onerror = function (err) {
-            self.track({
-              severity: 'error',
-              stack: err.stack,
-              type: err.name || err.status,
-              message: err.message || err.responseURL,
-              resource: err.responseURL
-            });
-            if (xhrOnerror) {
-              return xhrOnerror.apply(this, arguments);
-            }
-          };
-          var xhrOnabort = this.onabort;
-          this.onabort = function (err) {
-            self.track({
-              severity: 'warn',
-              stack: err.stack,
-              type: err.name || err.status,
-              message: err.message || err.responseURL,
-              resource: err.responseURL
-            });
-            if (xhrOnabort) {
-              return xhrOnabort.apply(this, arguments);
-            }
-          };
-          var xhrOnload = this.onload;
-          this.onload = function onload(request) {
-            if (request.status && request.status >= 400) {
-              self.track({
-                severity: 'info',
-                stack: '',
-                type: 'HTTPResponse',
-                message: request.status + ' ' + request.statusText,
-                resource: request.responseURL
-              });
-            }
-            if (xhrOnload) {
-              return xhrOnload.apply(this, arguments);
-            }
-          };
-
-          if (self._originalHttpSend) {
-            self._originalHttpSend.apply(this, arguments);
           }
         };
       }
@@ -136,10 +84,6 @@
         window.onerror = this._originalOnError;
       }
 
-      if (this.modules.indexOf('http') > -1) {
-        window.XMLHttpRequest.prototype.send = this._originalHttpSend;
-      }
-
       if (this.modules.indexOf('console') > -1) {
         console.error = this._originalConsoleError;
       }
@@ -149,14 +93,14 @@
       }
     };
 
-    Desole.prototype.track = function (clientOptions) { // string, exception
+    Desole.prototype.track = function (clientOptions) {
       // Do validation
 
       var options = {
-        severity: clientOptions.severity, // mandatory
-        stack: clientOptions.stack, // mandatory
-        type: clientOptions.type, // mandatory
-        message: clientOptions.message, // mandatory
+        severity: clientOptions.severity,
+        stack: clientOptions.stack,
+        type: clientOptions.type,
+        message: clientOptions.message,
         timestamp: clientOptions.timestamp || Date.now(),
         resource: clientOptions.resource || (window && window.location && window.location.href),
         app: {
@@ -176,12 +120,6 @@
       var url = this.url;
       http.open('POST', url, true);
       http.setRequestHeader('Content-type', 'application/json');
-
-      // http.onreadystatechange = function () {
-      //   if (http.readyState === 4 && http.status === 200) {
-      //     // Do we need to track errors for this?
-      //   }
-      // };
 
       http.send(JSON.stringify(options));
     };
@@ -219,7 +157,7 @@
       function (name, dependencies, factory) {
         'use strict';
         var i = 0;
-        var global = this;
+        var global = window;
         var old = global[name];
         var mod, dependency;
 
