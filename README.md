@@ -1,9 +1,10 @@
-# Desole JavaScript collector client
+# Desole browser collector client
 
+![](https://desole.io/images/desole-logo.png)
 
-This project contains the code for the Desole JavaScript client collector, compatible with browsers and Node.js. 
+This project contains the code for the Desole browser client collector. Check out [desole.io](https://desole.io) for more information on how to set up the back-end.
 
-## Installing into a browser
+## Installing 
 
 You can either grab the code from this repository, install it using NPM, or use the CDN version:
 
@@ -29,12 +30,12 @@ Add this snippet before any other scripts in your HTML document, and replace the
 ```
 This will make Desole automatically track unhandled errors on the page, as well as script loading errors. Make sure to add the block to the end of the HEAD element
 
-To track errors manually, use `window.desole.captureException` to send an exception object or a promise rejection to the collector API:
+To track errors manually, use instance created with `new Desole` and call the `captureException` to send an exception object or a promise rejection to the collector API:
 
 ```js
 try {
 		throw new Error('capturedException');
 	} catch (e) {
-		window.desole.captureException(e)
+		window.desole.captureException(e);
 	}
 ```
