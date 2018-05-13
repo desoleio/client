@@ -34,8 +34,8 @@ To track errors manually, use instance created with `new Desole` and call the `c
 
 ```js
 try {
-		throw new Error('capturedException');
-	} catch (e) {
-		window.desole.captureException(e);
-	}
+  throw new Error('capturedException');
+} catch (e) {
+  window.desole.captureException(e);
+}
 ```
