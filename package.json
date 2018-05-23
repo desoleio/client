@@ -4,12 +4,16 @@
   "description": "Client side library for Desole.io",
   "main": "client.js",
   "scripts": {
+    "test": "jest",
     "lint": "eslint src",
     "release": "webpack --config webpack.config.js && mkdir -p $npm_package_config_releaseDir/$npm_package_version && cp dist/*.js $npm_package_config_releaseDir/$npm_package_version && cat dist/desole.js | openssl dgst -sha384 -binary | openssl enc -base64 -A && echo"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/desoleio/client.git"
+  },
+  "jest": {
+    "roots": ["<rootDir>/src/", "<rootDir>/tests/"]
   },
   "keywords": [
     "desole",
@@ -29,6 +33,7 @@
     "eslint": "^4.19.1",
     "eslint-config-crockford": "^2.0.0",
     "eslint-config-defaults": "^9.0.0",
+    "jest": "^22.4.4",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.4"
   }
