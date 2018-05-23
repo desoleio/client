@@ -4,6 +4,7 @@
   "description": "Client side library for Desole.io",
   "main": "client.js",
   "scripts": {
+    "pretest": "npm run lint",
     "test": "jest",
     "lint": "eslint src",
     "release": "webpack --config webpack.config.js && mkdir -p $npm_package_config_releaseDir/$npm_package_version && cp dist/*.js $npm_package_config_releaseDir/$npm_package_version && cat dist/desole.js | openssl dgst -sha384 -binary | openssl enc -base64 -A && echo"
