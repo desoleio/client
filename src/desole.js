@@ -1,4 +1,4 @@
-const uuidv4 = require('./helpers/uuidv4');
+var uuidv4 = require('./helpers/uuidv4');
 
 function Desole(config) {
   'use strict';
