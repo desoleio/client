@@ -2,7 +2,8 @@
   "name": "@desole/client",
   "version": "1.0.1",
   "description": "Client side library for Desole.io",
-  "main": "client.js",
+  "main": "src/desole.js",
+  "files": ["src", "dist"],
   "scripts": {
     "pretest": "npm run lint",
     "test": "jest",
