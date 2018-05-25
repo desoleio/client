@@ -1,20 +1,24 @@
 {
   "name": "@desole/client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Client side library for Desole.io",
   "main": "client.js",
   "scripts": {
     "pretest": "npm run lint",
     "test": "jest",
     "lint": "eslint src",
-    "release": "webpack --config webpack.config.js && mkdir -p $npm_package_config_releaseDir/$npm_package_version && cp dist/*.js $npm_package_config_releaseDir/$npm_package_version && cat dist/desole.js | openssl dgst -sha384 -binary | openssl enc -base64 -A && echo"
+    "webpack": "webpack --config webpack.config.js",
+    "release": "npm run webpack && mkdir -p $npm_package_config_releaseDir/$npm_package_version && cp dist/* $npm_package_config_releaseDir/$npm_package_version"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/desoleio/client.git"
   },
   "jest": {
-    "roots": ["<rootDir>/src/", "<rootDir>/tests/"]
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/tests/"
+    ]
   },
   "keywords": [
     "desole",
@@ -36,6 +40,7 @@
     "eslint-config-defaults": "^9.0.0",
     "jest": "^22.4.4",
     "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.4"
+    "webpack-cli": "^2.1.4",
+    "webpack-subresource-integrity": "^1.1.0-rc.4"
   }
 }
