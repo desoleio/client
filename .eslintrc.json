@@ -5,17 +5,19 @@
     "browser": true
   },
   "parserOptions": {
-    "ecmaVersion": 5
+    "ecmaVersion": 6
   },
   "rules": {
     "semi": ["error", "always"],
     "no-shadow": ["error"],
-    "strict": ["error", "function"],
+    "strict": ["error", "global"],
     "no-unused-vars": "error",
-    "indent": ["error", 2],
-    "one-var": ["error"],
+    "indent": ["error", "tab", { "SwitchCase": 1, "MemberExpression": "off" } ],
+    "one-var": 0,
     "vars-on-top": ["error"],
     "no-underscore-dangle": 0,
+    "prefer-const": ["error"],
+    "no-var": ["error"],
     "no-plusplus": 0,
     "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}]
   }

@@ -12,7 +12,7 @@
   "scripts": {
     "pretest": "npm run lint",
     "test": "jest",
-    "lint": "eslint src",
+    "lint": "eslint src tests *.js",
     "webpack": "webpack --config webpack.config.js",
     "release": "npm run webpack && mkdir -p $npm_package_config_releaseDir/$npm_package_version && cp dist/* $npm_package_config_releaseDir/$npm_package_version"
   },

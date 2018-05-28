@@ -1,0 +1,10 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 5
+  },
+  "rules": {
+    "prefer-const": 0,
+    "strict": ["error", "function"],
+    "no-var": 0
+  }
+}
