@@ -2,18 +2,19 @@
   "extends": "crockford",
   "env": {
     "node": true,
-    "es6": true
+    "browser": true
   },
   "parserOptions": {
-    "ecmaVersion": 6
+    "ecmaVersion": 5
   },
   "rules": {
     "semi": ["error", "always"],
+    "no-shadow": ["error"],
     "strict": ["error", "function"],
     "no-unused-vars": "error",
     "indent": ["error", 2],
-    "one-var": 0,
-    "vars-on-top": 0,
+    "one-var": ["error"],
+    "vars-on-top": ["error"],
     "no-underscore-dangle": 0,
     "no-plusplus": 0,
     "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}]

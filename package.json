@@ -3,7 +3,12 @@
   "version": "1.0.1",
   "description": "Client side library for Desole.io",
   "main": "src/desole.js",
-  "files": ["src", "dist", "README.md", "LICENSE"],
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "pretest": "npm run lint",
     "test": "jest",

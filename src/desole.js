@@ -93,28 +93,27 @@ Desole.prototype.dettach = function () {
 Desole.prototype.track = function (clientOptions) {
   'use strict';
 
-  var options = {
-    severity: clientOptions.severity,
-    stack: clientOptions.stack,
-    type: clientOptions.type,
-    message: clientOptions.message,
-    timestamp: clientOptions.timestamp || Date.now(),
-    resource: clientOptions.resource || (global && global.location && global.location.href),
-    app: {
-      name: (clientOptions.app && clientOptions.app.name) || this.app.name,
-      version: (clientOptions.app && clientOptions.app.version) || this.app.version,
-      stage: (clientOptions.app && clientOptions.app.stage) || this.app.stage
-    },
-    endpoint: {
-      id: (clientOptions.endpoint && clientOptions.endpoint.id) || uuidv4(),
-      language: (clientOptions.endpoint && clientOptions.endpoint.language) || global.navigator && global.navigator.language,
-      platform: (clientOptions.endpoint && clientOptions.endpoint.platform) || global.navigator && global.navigator.platform
-    },
-    tags: clientOptions.tags || this.tags
-  };
-
-  var http = new global.XMLHttpRequest();
-  var url = this.url;
+  var http = new global.XMLHttpRequest(),
+    url = this.url,
+    options = {
+      severity: clientOptions.severity,
+      stack: clientOptions.stack,
+      type: clientOptions.type,
+      message: clientOptions.message,
+      timestamp: clientOptions.timestamp || Date.now(),
+      resource: clientOptions.resource || (global && global.location && global.location.href),
+      app: {
+        name: (clientOptions.app && clientOptions.app.name) || this.app.name,
+        version: (clientOptions.app && clientOptions.app.version) || this.app.version,
+        stage: (clientOptions.app && clientOptions.app.stage) || this.app.stage
+      },
+      endpoint: {
+        id: (clientOptions.endpoint && clientOptions.endpoint.id) || uuidv4(),
+        language: (clientOptions.endpoint && clientOptions.endpoint.language) || global.navigator && global.navigator.language,
+        platform: (clientOptions.endpoint && clientOptions.endpoint.platform) || global.navigator && global.navigator.platform
+      },
+      tags: clientOptions.tags || this.tags
+    };
   http.open('POST', url, true);
   http.setRequestHeader('Content-type', 'application/json');
 
