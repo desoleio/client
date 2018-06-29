@@ -97,7 +97,6 @@ Desole.prototype.track = function (clientOptions) {
 		url = this.url,
 		options = {
 			severity: clientOptions.severity,
-			stack: clientOptions.stack,
 			type: clientOptions.type,
 			message: clientOptions.message,
 			timestamp: clientOptions.timestamp || Date.now(),
@@ -114,6 +113,14 @@ Desole.prototype.track = function (clientOptions) {
 			},
 			tags: clientOptions.tags || this.tags
 		};
+	options.stack = clientOptions.stack;
+	if (typeof options.stack !== 'string') {
+		try {
+			options.stack = JSON.stringify(options.stack);
+		} catch (err) {
+			console.log('Stack trace conversion to string failed', err);
+		}
+	}
 	http.open('POST', url, true);
 	http.setRequestHeader('Content-type', 'application/json');
 
