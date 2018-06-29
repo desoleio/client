@@ -12,8 +12,7 @@ Check out [desole.io](https://desole.io) for more information, especially on how
 
 You can either grab the code from the [dist](/dist) directory in this repository, install it using NPM with `npm install @desole/client`, or use the CDN version:
 
-* non-minified: https://desole.io/code/1.0.0/client.js (CORS integrity hash sha384-F6dlhvEal5yUmvat1O3JGkkA6xaPbwxWhQksJVfbZTFvLR3KkWmNf2OkF1jyuzzA)
-* minified: https://desole.io/code/1.0.0/client-min.js (CORS integrity hash sha384-RJpzB9k3WRLZZ0Th8DoSiEWUYMmt5+9fxLajledFE5PY/23D+tHatLo38g/LDc7z)
+* https://desole.io/code/1.0.2/client-min.js (CORS integrity hash `sha384-rdVrTOZH/6jQRWZnhI475nWEZIe+ryEtsLkk+uPA9vJxKWWmgPpxYoyGhgAlP6lC`)
 
 ## Configuring the HTML page
 
