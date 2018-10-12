@@ -1,6 +1,6 @@
 {
   "name": "@desole/client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Client side library for Desole.io",
   "main": "src/desole.js",
   "files": [
