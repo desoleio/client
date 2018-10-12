@@ -28,7 +28,7 @@ Desole.prototype.attach = function () {
 		global.onerror = function (message, url, lineNo, columnNo, err) {
 			self.track({
 				severity: 'error',
-				stack: err.stack || String(err),
+				stack: (typeof err === 'object' && err.stack) || String(err),
 				type: err.name,
 				message: message || String(err)
 			});
